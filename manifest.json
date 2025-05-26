@@ -1,0 +1,21 @@
+{
+  "name": "Open in WhatsApp",
+  "short_name": "WhatsAppLink",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#25d366",
+  "theme_color": "#25d366",
+  "description": "Open chat directly in WhatsApp with any number.",
+  "icons": [
+    {
+      "src": "https://iili.io/3bvDr5g.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://iili.io/3bvDr5g.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

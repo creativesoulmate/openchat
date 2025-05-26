@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Open in WhatsApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+   <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="img/up.png" />
+  <link rel="manifest" href="manifest.json" />
+
+  <style>
+    :root {
+      --primary-color: #25d366;
+      --text-color: #000;
+      --bg-color: #f0f0f0;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.3);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .background-blobs {
+      position: fixed;
+      top: -30%;
+      left: -30%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 40% 40%, #25d36633, transparent 70%),
+                  radial-gradient(circle at 60% 60%, #128c7e22, transparent 80%);
+      animation: moveBlobs 20s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes moveBlobs {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.1) translate(30px, 30px); }
+    }
+
+	@keyframes neonPulse {
+	  0%, 100% {
+		box-shadow:
+		  0 0 10px #25d366,
+		  0 0 20px #12c2e9,
+		  0 0 30px #c471ed,
+		  0 0 40px #f64f59,
+		  inset 0 0 10px #25d36633;
+	  }
+	  50% {
+		box-shadow:
+		  0 0 15px #25d366,
+		  0 0 25px #12c2e9,
+		  0 0 35px #c471ed,
+		  0 0 45px #f64f59,
+		  inset 0 0 15px #ffffff22;
+	  }
+	}
+
+	.container {
+	  width: 90%;
+	  max-width: 420px;
+	  padding: 2rem;
+	  border-radius: 2rem;
+	  backdrop-filter: blur(30px);
+	  background: var(--glass-bg);
+	  border: 2px solid transparent;
+	  background-clip: padding-box;
+	  text-align: center;
+	  z-index: 1;
+
+	  /* Neon Glow Border with Multicolor Pulse */
+	  animation: neonPulse 4s infinite ease-in-out;
+	}
+
+
+
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: var(--text-color);
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 90%;
+      max-width: 300px;
+      margin: 1rem auto 0 auto;
+      display: block;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.1);
+      color: inherit;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      margin: 1.5rem auto 0 auto;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 2rem;
+      border: none;
+      outline: none;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.4), 0 0 30px rgba(18, 140, 126, 0.3);
+      display: block;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #25d366, 0 0 40px #128c7e;
+    }
+
+    .mode-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .mode-btn {
+      font-size: 1.5rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: transform 0.3s ease, filter 0.3s;
+    }
+
+    .mode-btn:hover {
+      transform: scale(1.3) rotate(8deg);
+      filter: drop-shadow(0 0 6px #25d366aa);
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      letter-spacing: 0.5px;
+    }
+
+    /* Mode Classes */
+    .glass-mode {
+      --bg-color: linear-gradient(145deg, #e3fdf5, #ffe6fa);
+      --text-color: #000;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+    }
+
+    .day-mode {
+      --bg-color: #ffffff;
+      --text-color: #000;
+      --glass-bg: rgba(255, 255, 255, 0.2);
+    }
+
+    .dark-mode {
+      --bg-color: #0e0e0e;
+      --text-color: #fff;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+    }
+	.install-button {
+	  margin-top: 1rem;
+	  background: #25d366;
+	  color: white;
+	  border: none;
+	  border-radius: 2rem;
+	  padding: 1rem 2rem;
+	  cursor: pointer;
+	  font-weight: bold;
+	  box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+	  display: inline-block; /* Initially display none, JS will show */
+	  transition: all 0.4s ease;
+	}
+
+	.install-button:hover {
+	  transform: scale(1.05);
+	  box-shadow: 0 0 20px #25d366, 0 0 40px #128c7e;
+	}
+
+  </style>
+</head>
+<body class="glass-mode">
+  <div class="background-blobs"></div>
+  <div class="container">
+    <h2>🚀 Open in WhatsApp</h2>
+
+    <input type="text" id="phoneNumber" placeholder="📞 Enter number with country code" />
+    <input type="text" id="message" placeholder="💬 Type your message (optional)" />
+
+    <button onclick="openInWhatsApp()">Open in WhatsApp</button>
+
+    <div class="mode-switcher">
+      <button class="mode-btn" onclick="setMode('glass')">🧊</button>
+      <button class="mode-btn" onclick="setMode('day')">🌞</button>
+      <button class="mode-btn" onclick="setMode('dark')">🌙</button>
+    </div>
+
+        <div class="footer">Futuristic UI ✨ | Made with passion 🎯</div>
+
+    <!-- INSTALL Button -->
+    <button id="installBtn" class="install-button" style="display:none;">
+		📲 Install this app
+	</button>
+	<div class="footer" style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7; letter-spacing: 0.5px;">
+  Need developer help? 
+  <a href="mailto:contact@yourmail.com" id="devMail" style="color: var(--primary-color); text-decoration: underline; cursor: pointer;">
+    contact@yourmail.com
+  </a>
+  <span id="copyMsg" style="display:none; color:green; margin-left:8px;">Copied!</span>
+</div>
+
+  </div> <!-- end of .container -->
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedMode = localStorage.getItem("mode") || "glass";
+      setMode(savedMode);
+    });
+
+    function openInWhatsApp() {
+      const phone = document.getElementById("phoneNumber").value.trim().replace(/\D/g, '');
+      const message = document.getElementById("message").value.trim();
+
+      const isValid = /^\d{7,15}$/.test(phone);
+      if (!isValid) {
+        alert("Enter a valid phone number with country code (e.g., 14155552671).");
+        return;
+      }
+
+      let url = `https://wa.me/${phone}`;
+      if (message) {
+        url += `?text=${encodeURIComponent(message)}`;
+      }
+
+      window.open(url, "_blank");
+    }
+
+    function setMode(mode) {
+      document.body.classList.remove("glass-mode", "day-mode", "dark-mode");
+
+      if (mode === "day") {
+        document.body.classList.add("day-mode");
+      } else if (mode === "dark") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.add("glass-mode");
+      }
+
+      localStorage.setItem("mode", mode);
+    }
+	if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(function () {
+          console.log('✅ Service Worker Registered');
+        });
+    }
+	 // Install prompt code:
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block'; // Show install button
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    } else {
+      console.log('User dismissed the install prompt');
+    }
+    deferredPrompt = null;
+    installBtn.style.display = 'none'; // Hide button after prompt
+  });
+  </script>
+</body>
+</html>
